@@ -6,6 +6,10 @@ class Pages extends Controller {
   }
 
   public function index() {
+    if (isLoggedIn()) {
+      redirect('posts');
+    }
+
     $posts = $this->postModel->getPosts();
     $data = [
       'title' => 'SharePosts',
